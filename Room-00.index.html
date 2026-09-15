@@ -1,0 +1,97 @@
+import { createFileRoute } from "@tanstack/react-router";
+import heroAsset from "@/assets/room00-main.png.asset.json";
+import conceptAsset from "@/assets/room00-concept-new.jpg.asset.json";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Room-00｜心と体をゆるめるボディメンテナンスサロン" },
+      { name: "description", content: "月に一度、何も考えず心と体をゆるめる。筋膜ケアをベースにした女性のためのボディメンテナンスサロンRoom-00。" },
+      { property: "og:title", content: "Room-00｜心と体をゆるめるボディメンテナンスサロン" },
+      { property: "og:description", content: "月に一度、何も考えず心と体をゆるめる。女性のための静かな休息時間を。" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Index,
+});
+
+const reasons = [
+  ["頑張る女性のための「休む時間」", "仕事も家事も、人との関わりも大切にするあなたへ。誰かのためではなく、自分のために過ごす時間をご用意しています。"],
+  ["無意識の「力み」に着目したケア", "肩や首、背中など、知らないうちに力が入りやすい体を丁寧にケア。「なんだかずっと力が抜けない」そんな方にもおすすめです。"],
+  ["筋膜ボディバランストリートメント", "全身を丁寧に触れながら、こわばった体をゆっくりゆるめます。その日の状態に合わせて、心地よく整えていきます。"],
+  ["何も考えなくていい空間", "静かに過ごしたい日も、ゆっくり話したい日も。その日のあなたに合わせてお迎えします。"],
+  ["月に一度、戻ってきたくなる場所", "「また頑張ろう」と思うためには、ちゃんと休むことも大切。月に一度のパワースポットになれたら嬉しいです。"],
+];
+
+const flow = [
+  ["カウンセリング", "今日の体調やお悩みを丁寧に伺います。"],
+  ["ボディチェック", "力みやこわばりのある部分を確認します。"],
+  ["施術", "筋膜ボディバランストリートメントで、体をゆっくりゆるめます。"],
+  ["アフターカウンセリング", "体の変化を一緒に確認し、次回に向けてご相談します。"],
+];
+
+const prices = [["70分", "17,600"], ["90分", "22,000"], ["120分", "28,380"]];
+const faqs = [
+  ["エステが初めてでも大丈夫ですか？", "もちろん大丈夫です。お体の状態やお悩みを伺いながら、その日の状態に合わせて施術いたします。無理にコースをおすすめすることもありませんので、安心してお越しください。"],
+  ["どんな服装で行けばいいですか？", "施術用のお着替えをご用意していますので、普段着のままお越しいただけます。お仕事帰りにも気軽にご利用ください。"],
+  ["どのくらいの頻度で通えばいいですか？", "お体の状態やライフスタイルによって異なりますが、まずは月に1度、自分の体を見つめ直す時間としてご利用いただくのがおすすめです。"],
+];
+
+function SectionTitle({ en, children }: { en: string; children: React.ReactNode }) {
+  return <><span className="font-en text-[13px] italic text-brass sm:text-sm">{en}</span><h2 className="mt-3 font-serif text-[19px] leading-[1.75] text-ink sm:text-xl md:text-2xl">{children}</h2></>;
+}
+
+function Index() {
+  return (
+    <main className="min-h-screen bg-background pb-24 font-sans font-light text-muted-foreground antialiased md:pb-0">
+      <header className="sticky top-0 z-30 border-b border-glass-line bg-glass backdrop-blur-md">
+        <div className="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3.5 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:px-6 sm:py-4">
+          <a href="#top" className="min-w-0 truncate font-en text-xl text-ink" aria-label="Room-00 トップ">Room<em className="not-italic text-brass">-00</em></a>
+          <span className="hidden text-[10px] tracking-[0.2em] text-muted-foreground sm:block">BODY MAINTENANCE SALON</span>
+          <a href="#reserve" className="shrink-0 border border-ink/40 px-4 py-2 font-serif text-xs text-ink transition-colors hover:bg-ink hover:text-paper sm:px-5">ご予約</a>
+        </div>
+      </header>
+
+      <section id="top" className="relative isolate min-h-[42rem] scroll-mt-16 sm:min-h-[calc(100svh-65px)]">
+        <img src={heroAsset.url} alt="緑と柔らかな陽光に包まれたRoom-00の施術室" width={1365} height={768} className="absolute inset-0 -z-20 h-full w-full object-cover object-[54%_center] sm:object-center" />
+        <div className="absolute inset-0 -z-10 bg-hero-shade" />
+        <div className="mx-auto flex min-h-[42rem] max-w-5xl items-end px-5 pb-24 sm:min-h-[calc(100svh-65px)] sm:px-6 sm:pb-24 md:pb-14">
+          <div className="w-full max-w-md border border-paper/15 bg-hero-glass p-6 shadow-soft backdrop-blur-md min-[380px]:p-7 md:p-9">
+            <span className="font-en text-[13px] italic text-brass-light sm:text-sm">Once a month</span>
+            <h1 className="mt-3 font-serif text-[21px] leading-[1.85] text-paper min-[380px]:text-[23px] md:mt-4 md:text-[28px]">何も考えない時間を、<br />月に一度。</h1>
+            <p className="mt-3 text-[12.5px] leading-[1.95] text-paper/75 min-[380px]:mt-4 min-[380px]:text-[13px]">心と体をゆるめる、ボディメンテナンスサロン。筋膜ケアをベースに、こわばった体をゆっくりゆるめながら、心までふっと軽くなる時間を。</p>
+            <a href="#reserve" className="mt-5 inline-flex min-h-11 w-full items-center justify-center border border-paper/40 px-5 py-3 font-serif text-[13px] text-paper transition-colors hover:bg-paper hover:text-ink min-[380px]:mt-6 min-[380px]:w-auto min-[380px]:px-8">ご予約はこちら</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-12 md:py-16">
+        <div className="grid grid-cols-1 border-y border-glass-line bg-glass backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-glass-line">
+          {[["所要時間", "70・90・120分"], ["頻度の目安", "月に一度"], ["ご予約", "オンライン・お電話"]].map(([label, value]) => <div key={label} className="border-b border-glass-line px-5 py-4 last:border-0 sm:border-0 sm:py-5"><span className="block text-[10px] text-ink-faint">{label}</span><span className="mt-1 block font-serif text-sm text-ink">{value}</span></div>)}
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-5xl gap-8 px-5 py-14 sm:gap-10 sm:px-6 sm:py-16 md:grid-cols-[1fr_1.1fr] md:items-center md:py-24">
+        <div className="order-2 md:order-1"><SectionTitle en="Concept">頑張る女性のための、<br />「心と体のエステサロン」</SectionTitle><div className="mt-7 space-y-5 text-[13.5px] leading-[2.1]"><p>仕事や家事、人との関わりの中で、知らないうちに体に力が入っていませんか？</p><p>筋膜ケアをベースに、こわばった体をゆっくりゆるめながら、心までふっと軽くなる時間をお届けします。</p><p>月に一度、何も考えず自分を休ませる。そんな場所でありたいと思っています。</p></div></div>
+        <img src={conceptAsset.url} alt="セラピストがオイルトリートメントを行う手元" width={1088} height={1360} loading="lazy" className="order-1 aspect-[4/5] w-full object-cover md:order-2" />
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 sm:py-16 md:py-24"><SectionTitle en="Reasons">Room-00が選ばれる理由</SectionTitle><ul className="mt-8 border-t border-glass-line sm:mt-9">{reasons.map(([title, text], i) => <li key={title} className="grid grid-cols-[34px_minmax(0,1fr)] gap-x-3 border-b border-glass-line py-5 sm:grid-cols-[42px_minmax(0,1fr)] sm:gap-x-4 sm:py-6 md:grid-cols-[60px_minmax(0,1fr)]"><span className="font-en text-lg italic text-brass sm:text-xl">{String(i + 1).padStart(2, "0")}</span><div className="min-w-0"><h3 className="font-serif text-[14px] leading-[1.7] text-ink sm:text-[15px]">{title}</h3><p className="mt-2 max-w-2xl text-[12.5px] leading-[1.95] sm:text-[13px]">{text}</p></div></li>)}</ul></section>
+
+      <section className="bg-mist"><div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 sm:py-16 md:py-24"><SectionTitle en="Flow">施術の流れ</SectionTitle><ol className="mt-8 grid gap-px border border-glass-line bg-glass-line sm:mt-9 sm:grid-cols-2 lg:grid-cols-4">{flow.map(([title, text], i) => <li key={title} className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3 bg-glass p-5 backdrop-blur-sm sm:block sm:p-6"><span className="font-en text-lg italic text-brass">0{i + 1}</span><div className="min-w-0"><h3 className="font-serif text-sm leading-relaxed text-ink sm:mt-4 sm:min-h-10">{title}</h3><p className="mt-1 text-xs leading-[1.9] sm:mt-2">{text}</p></div></li>)}</ol></div></section>
+
+      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 sm:py-16 md:py-24"><SectionTitle en="Price">料金・所要時間</SectionTitle><p className="mt-5 text-[12.5px] leading-[1.9] sm:text-[13px]">オーダーメイド施術のため、その日の体の状態に合わせて内容を調整いたします。</p><div className="mt-7 border-t border-glass-line sm:mt-8">{prices.map(([time, price]) => <div key={time} className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-glass-line py-5"><span className="min-w-0 font-serif text-[13.5px] leading-relaxed text-ink sm:text-[15px]">{time}ボディメンテナンス</span><span className="shrink-0 font-en text-xl text-ink sm:text-2xl"><sup className="mr-1 text-[10px] text-ink-faint sm:text-xs">¥</sup>{price}</span></div>)}</div></section>
+
+      <section className="bg-mist"><div className="mx-auto max-w-5xl px-5 py-16 sm:px-6 sm:py-20 md:py-28"><div className="border-l border-brass pl-5 sm:pl-6 md:ml-3 md:max-w-3xl md:pl-10"><SectionTitle en="Message">サロンより</SectionTitle><div className="mt-6 space-y-5 text-[13px] leading-[2.1] sm:text-[13.5px] sm:leading-[2.15]"><p>はじめまして、Room-00です。私自身、頑張ることが当たり前になっている女性をたくさん見てきました。</p><p>周りのことを考えて、仕事を頑張って、家族を大切にして……気づけば、自分のことは後回し。「疲れているけれど、まだ頑張れる」そんなふうに過ごしていませんか？</p><p>施術を受ける時間だけでも、誰かのためではなく“自分のため”に過ごしてほしいと思っています。</p><p>何も考えず、ゆっくり呼吸する。月に一度、ここへ来ると「また頑張れそう」と思える。そんな場所を、一緒につくっていけたら嬉しいです。</p></div><span className="mt-7 block font-en text-lg italic text-brass">Room-00</span></div></div></section>
+
+      <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 sm:py-16 md:py-24"><SectionTitle en="FAQ">よくある質問</SectionTitle><div className="mt-8">{faqs.map(([q, a]) => <details key={q} className="group border-t border-glass-line last:border-b"><summary className="grid cursor-pointer list-none grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 py-5 font-serif text-[13.5px] leading-relaxed text-ink sm:text-sm"><em className="font-en text-lg not-italic text-brass">Q</em><span className="min-w-0">{q}</span><span className="shrink-0 text-lg text-ink-faint transition-transform group-open:rotate-45">+</span></summary><p className="max-w-3xl pb-6 pl-8 text-[12.5px] leading-[1.95] sm:text-[13px]">{a}</p></details>)}</div></section>
+
+      <section id="reserve" className="scroll-mt-16 px-5 py-16 sm:px-6 sm:py-24 md:py-32"><div className="mx-auto max-w-xl border border-glass-line bg-glass px-5 py-8 text-center shadow-soft backdrop-blur-md min-[380px]:p-8 md:p-12"><span className="font-en text-[13px] italic text-brass sm:text-sm">Just for you</span><h2 className="mt-4 font-serif text-[19px] leading-[1.9] text-ink sm:text-xl md:text-2xl">最近、自分のことを<br />後回しにしていませんか？</h2><p className="mx-auto mt-5 max-w-md text-[12.5px] leading-[2] sm:text-[13px]">「疲れたな」と感じたときこそ、少し立ち止まって、自分の体に目を向ける時間を。月に一度のRoom-00で、心と体をゆるめて。</p><a href="mailto:reserve@room-00.example" className="mt-7 inline-flex min-h-12 w-full items-center justify-center bg-ink px-4 py-3 font-serif text-[12.5px] text-paper transition-colors hover:bg-brass min-[380px]:mt-8 min-[380px]:w-auto min-[380px]:px-8 min-[380px]:text-[13px]">ご予約・お問い合わせはこちら</a></div></section>
+
+      <footer className="border-t border-glass-line px-6 py-12 text-center"><span className="font-en text-xl text-ink">Room<em className="not-italic text-brass">-00</em></span><p className="mt-2 text-[11px] text-ink-faint">ボディメンテナンスサロン</p><a href="#reserve" className="mt-4 inline-block text-xs text-brass underline underline-offset-4">ご予約先はこちら</a><p className="mt-6 text-[11px] text-ink-faint">© Room-00</p></footer>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-glass-line bg-glass px-4 pb-[calc(0.625rem+env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-md md:hidden"><a href="#reserve" className="flex min-h-12 items-center justify-center bg-ink px-4 text-center font-serif text-[13px] text-paper">ご予約はこちら</a></div>
+    </main>
+  );
+}
